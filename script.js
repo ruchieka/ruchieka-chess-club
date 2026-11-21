@@ -235,7 +235,7 @@ blackClock.style.display = 'none';
 // 7. STOCKFISH
 // =================================
 
-// FIXED FOR GITHUB PAGES
+// FIXED: GitHub Pages project URL
 const engine = new Worker(
   import.meta.env.BASE_URL + 'engine/stockfish-19-lite-single.js'
 );
@@ -444,9 +444,8 @@ board.addEventListener('snap-end', () => {
 // Initial message
 updateStatus('Choose your game time! 🎀');
 
-// Show game after clicking Let's Play
+// Show the game after clicking Let's Play
 document.getElementById('start-game').addEventListener('click', () => {
   document.getElementById('setup-screen').style.display = 'none';
   document.querySelector('.game-area').style.display = 'block';
 });
-
