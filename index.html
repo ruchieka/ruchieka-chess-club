@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ruchieka's Chess Club 🎀</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+
+  <main class="game-container">
+
+    <header class="club-header">
+      <div class="header-decoration">🎀</div>
+      <h1>Ruchieka's Chess Club</h1>
+      <p>A little strategy. A little attitude.</p>
+    </header>
+
+    <!-- GAME SETUP -->
+    <section id="setup-screen" class="setup-screen">
+
+      <div class="setup-cat">🐱🎀</div>
+
+      <h2>Choose your game time</h2>
+
+      <p class="setup-subtitle">
+        How long do you think you can survive?
+      </p>
+
+      <div class="time-options">
+
+        <button class="time-option" data-time="1">
+          <strong>1 Minute</strong>
+          <span>Bullet</span>
+        </button>
+
+        <button class="time-option selected" data-time="3">
+          <strong>3 Minutes</strong>
+          <span>Blitz</span>
+        </button>
+
+        <button class="time-option" data-time="10">
+          <strong>10 Minutes</strong>
+          <span>Rapid</span>
+        </button>
+
+        <button class="time-option" data-time="0">
+          <strong>Untimed</strong>
+          <span>No pressure. Allegedly.</span>
+        </button>
+
+      </div>
+
+      <button id="start-game">
+        Let's Play ♟️
+      </button>
+
+    </section>
+
+    <!-- GAME AREA -->
+    <section class="game-area">
+
+      <div class="ruchieka-assistant">
+
+        <div class="ruchieka-avatar">
+          🐱🎀
+        </div>
+
+        <div class="ruchieka-speech">
+          <strong>Ruchieka</strong>
+          <p id="status">
+            Ready to lose? ♟️
+          </p>
+        </div>
+
+      </div>
+
+      <!-- CLOCKS -->
+      <div class="chess-clocks">
+
+        <div class="clock active" id="white-clock">
+          <span>YOU ♙</span>
+          <strong id="white-time">03:00</strong>
+        </div>
+
+        <div class="clock" id="black-clock">
+          <span>RUCHIEKA ♟</span>
+          <strong id="black-time">03:00</strong>
+        </div>
+
+      </div>
+
+      <!-- PASTEL CHESSBOARD -->
+      <div class="board-container">
+
+        <chess-board
+          id="board"
+          light-square-color="#fff0f5"
+          dark-square-color="#e8a9c4">
+        </chess-board>
+
+      </div>
+
+      <p class="game-footer">
+        Play nicely. Or don't. 🎀
+      </p>
+
+    </section>
+
+  </main>
+
+  <script type="module" src="/script.js"></script>
+
+</body>
+</html>

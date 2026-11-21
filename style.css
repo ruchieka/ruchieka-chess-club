@@ -1,0 +1,265 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Trebuchet MS", sans-serif;
+  background: #fff5f8;
+  color: #59434d;
+  display: flex;
+  justify-content: center;
+  padding: 35px 20px;
+}
+
+.game-container {
+  width: 100%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.club-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-decoration {
+  font-size: 32px;
+}
+
+.club-header h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(30px, 5vw, 46px);
+  margin: 8px 0;
+  color: #b65e83;
+}
+
+.club-header p {
+  color: #987785;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.setup-screen {
+  max-width: 650px;
+  margin: 45px auto;
+  padding: 35px;
+  text-align: center;
+  background: white;
+  border: 1px solid #f3dce6;
+  border-radius: 24px;
+  box-shadow: 0 12px 35px #dca9bd30;
+}
+
+.setup-cat {
+  font-size: 48px;
+  margin-bottom: 12px;
+}
+
+.setup-screen h2 {
+  font-family: Georgia, serif;
+  font-size: 28px;
+  color: #a64f76;
+}
+
+.setup-subtitle {
+  color: #987785;
+}
+
+.time-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin: 28px 0;
+}
+
+.time-option {
+  padding: 20px 12px;
+  background: #fff7fa;
+  border: 2px solid #f1d5e1;
+  border-radius: 16px;
+  color: #765263;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.time-option strong,
+.time-option span {
+  display: block;
+}
+
+.time-option strong {
+  font-size: 17px;
+  margin-bottom: 6px;
+}
+
+.time-option span {
+  font-size: 13px;
+}
+
+.time-option:hover,
+.time-option.selected {
+  background: #fce5ef;
+  border-color: #d78aaa;
+  transform: translateY(-2px);
+}
+
+#start-game {
+  border: none;
+  border-radius: 30px;
+  padding: 15px 35px;
+  background: #d78aaa;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#start-game:hover {
+  background: #bd6f91;
+}
+
+.game-area {
+  width: 100%;
+  max-width: 760px;
+  margin: 25px auto;
+  display: none;
+}
+
+.ruchieka-assistant {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  border: 1px solid #f2dce5;
+  padding: 18px 22px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 18px #dca9bd20;
+}
+
+.ruchieka-avatar {
+  font-size: 45px;
+  min-width: 55px;
+  text-align: center;
+}
+
+.ruchieka-speech strong {
+  color: #b65e83;
+  font-size: 17px;
+}
+
+.ruchieka-speech p {
+  margin: 6px 0 0;
+  color: #765263;
+}
+
+.chess-clocks {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.clock {
+  flex: 1;
+  padding: 15px 20px;
+  background: white;
+  border: 2px solid #f1dce5;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #765263;
+}
+
+.clock span {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.clock strong {
+  font-size: 25px;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock.active {
+  border-color: #d78aaa;
+  background: #fff0f5;
+}
+
+.board-container {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 12px;
+  background: white;
+  border: 1px solid #f0d7e2;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px #dca9bd25;
+}
+
+chess-board {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 1;
+}
+
+.game-footer {
+  text-align: center;
+  color: #a77d8e;
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 18px 12px;
+  }
+
+  .setup-screen {
+    padding: 24px 16px;
+  }
+
+  .board-container {
+    padding: 6px;
+  }
+
+  .clock {
+    padding: 12px 10px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .clock strong {
+    font-size: 21px;
+  }
+}
+
+/* PASTEL PINK CHESSBOARD 🎀 */
+
+chess-board {
+  --light-square-color: #fff0f5;
+  --dark-square-color: #e8a9c4;
+  --highlight-color: #f7c9dc;
+}
+
+/* Make the board look softer */
+chess-board::part(light) {
+  background-color: #fff0f5;
+}
+
+chess-board::part(dark) {
+  background-color: #e8a9c4;
+}
+
+/* RUCHIEKA'S PASTEL CHESS THEME 🎀 */
+
+chess-board {
+  --light-color: #fff0f5 !important;
+  --dark-color: #e8a9c4 !important;
+  --highlight-color: #f9c6dc !important;
+}
