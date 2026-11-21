@@ -12,7 +12,6 @@ const board = document.querySelector('#board');
 const status = document.querySelector('#status');
 const setupScreen = document.querySelector('#setup-screen');
 const startButton = document.querySelector('#start-game');
-
 const whiteClock = document.querySelector('#white-clock');
 const blackClock = document.querySelector('#black-clock');
 const whiteTime = document.querySelector('#white-time');
@@ -53,7 +52,6 @@ function randomComment(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-// Piece values for simple tactical clues
 const pieceValues = {
   p: 1,
   n: 3,
@@ -72,34 +70,28 @@ function getMoveComment(move, side) {
   const opponent = isPlayer ? 'b' : 'w';
   const mover = isPlayer ? 'w' : 'b';
 
-  // Checkmate
   if (game.isCheckmate()) {
     return isPlayer
       ? "CHECKMATE! I need a moment. 😭"
       : "Checkmate, darling. That was inevitable. 🎀";
   }
 
-  // Draw
   if (game.isDraw()) {
     return "A draw! I suppose we're equally brilliant.";
   }
 
-  // Check
   if (game.isCheck()) {
     return isPlayer
       ? "Oh. That's rather inconvenient."
       : "A little situation has developed. Check. ♟️";
   }
 
-  // Promotion
   if (move.promotion) {
     return isPlayer
       ? "A promotion! Well, someone's ambitious."
       : "Promotion, darling. Things just got interesting.";
   }
 
-  // Brilliant tactical capture:
-  // A lower-value piece captures a higher-value piece.
   if (
     move.captured &&
     pieceValues[move.captured] > pieceValues[move.piece]
@@ -109,8 +101,6 @@ function getMoveComment(move, side) {
       : "A rather lovely exchange, wouldn't you say?";
   }
 
-  // Blunder clue:
-  // The moved piece is attacked and not defended.
   if (
     game.isAttacked(move.to, opponent) &&
     !game.isAttacked(move.to, mover)
@@ -120,14 +110,12 @@ function getMoveComment(move, side) {
       : "I believe I've just left you a little present.";
   }
 
-  // Captures
   if (move.captured) {
     return isPlayer
       ? "EXCUSE ME? That was mine! 😭"
       : "I'll be keeping that, thank you.";
   }
 
-  // Ordinary moves
   return isPlayer
     ? randomComment(playerComments)
     : randomComment(ruchiekaComments);
@@ -162,7 +150,6 @@ let blackSeconds = 180;
 
 let activeClock = 'w';
 let timerInterval = null;
-
 let gameStarted = false;
 let timeExpired = false;
 let engineThinking = false;
@@ -248,7 +235,10 @@ blackClock.style.display = 'none';
 // 7. STOCKFISH
 // =================================
 
-const engine = new Worker('/engine/stockfish-19-lite-single.js');
+// FIXED FOR GITHUB PAGES
+const engine = new Worker(
+  import.meta.env.BASE_URL + 'engine/stockfish-19-lite-single.js'
+);
 
 let engineReady = false;
 
@@ -310,7 +300,6 @@ function makeRuchiekaMove(moveText) {
       activeClock = 'w';
       updateClocks();
     }
-
   } catch (error) {
     engineThinking = false;
     console.error('Ruchieka move error:', error);
@@ -431,7 +420,6 @@ board.addEventListener('drop', (event) => {
     return;
   }
 
-  // React to the player's move
   updateStatus(getMoveComment(move, 'you'));
 
   if (game.isGameOver()) {
@@ -456,8 +444,9 @@ board.addEventListener('snap-end', () => {
 // Initial message
 updateStatus('Choose your game time! 🎀');
 
-// FIX: Show the chess game after clicking Let's Play
-document.getElementById("start-game").addEventListener("click", () => {
-  document.getElementById("setup-screen").style.display = "none";
-  document.querySelector(".game-area").style.display = "block";
+// Show game after clicking Let's Play
+document.getElementById('start-game').addEventListener('click', () => {
+  document.getElementById('setup-screen').style.display = 'none';
+  document.querySelector('.game-area').style.display = 'block';
 });
+
